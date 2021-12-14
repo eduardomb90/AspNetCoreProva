@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Application.Interfaces.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,11 +10,15 @@ using System.Threading.Tasks;
 namespace WebMvc.UI.Configuration
 {
     [Authorize]
-    public class MainController : Controller
+    public abstract class MainController : Controller
     {
-        public IActionResult Index()
+        protected readonly IMapper _mapper;
+        protected readonly IMovieService _movieService;
+
+        public MainController(IMapper mapper, IMovieService movieService)
         {
-            return View();
+            _mapper = mapper;
+            _movieService = movieService;
         }
     }
 }

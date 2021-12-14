@@ -24,6 +24,8 @@ namespace Data.Context
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
                 relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MovieDbContext).Assembly);
+
             var genres = new List<Genre>
             {
                 new Genre ("Action", "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.)."),

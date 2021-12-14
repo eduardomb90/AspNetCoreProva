@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Interfaces.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -14,15 +17,20 @@ namespace WebMvc.UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IMapper mapper, IMovieService movieService) 
+        : base(mapper, movieService)
         {
             _logger = logger;
         }
+
+        [AllowAnonymous]
 
         public IActionResult Index()
         {
             return View();
         }
+
+        [AllowAnonymous]
 
         public IActionResult Privacy()
         {
@@ -30,6 +38,7 @@ namespace WebMvc.UI.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [AllowAnonymous]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
