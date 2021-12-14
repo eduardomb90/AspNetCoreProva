@@ -39,85 +39,85 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d0eee2ec-375b-45f9-b27f-d9ba62ea3039"),
+                            Id = new Guid("2f60b161-3b09-4517-9243-8d773681c5a7"),
                             Description = "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.).",
                             Name = "Action"
                         },
                         new
                         {
-                            Id = new Guid("18c09a9f-75be-471a-87ea-e17c53ab39ae"),
+                            Id = new Guid("d2fbae0e-4bdb-4b72-ab3f-0bee95bb888d"),
                             Description = "An adventure story is about a protagonist who journeys to epic or distant places to accomplish something. It can have many other genre elements included within it, because it is a very open genre.",
                             Name = "Adventure"
                         },
                         new
                         {
-                            Id = new Guid("87cd7169-aa4f-45b0-b53c-93e37c9e03dd"),
+                            Id = new Guid("c80edcbf-7065-49f8-9678-1f62f59184ba"),
                             Description = "Technically speaking, animation is more of a medium than a film genre in and of itself; as a result, animated movies can run the gamut of traditional genres with the only common factor being that they don’t rely predominantly on live action footage.",
                             Name = "Animation"
                         },
                         new
                         {
-                            Id = new Guid("282bcfb8-0692-4506-ba79-77683854b48f"),
+                            Id = new Guid("7f12a4de-69a8-402e-a5e4-e8592bc1412c"),
                             Description = "Comedy is a story that tells about a series of funny or comical events, intended to make the audience laugh. It is a very open genre, and thus crosses over with many other genres on a frequent basis.",
                             Name = "Comedy"
                         },
                         new
                         {
-                            Id = new Guid("66ac5ce8-9f4d-4edc-a9e6-813c7433c360"),
+                            Id = new Guid("b3105b2e-2fc3-446f-a4a9-06a9a6d1f535"),
                             Description = "A subgenre which combines the romance genre with comedy, focusing on two or more individuals as they discover and attempt to deal with their romantic love, attractions to each other. The stereotypical plot line follows the boy-gets-girl, boy-loses-girl, boy gets girl back again sequence. ",
                             Name = "Romantic Comedy"
                         },
                         new
                         {
-                            Id = new Guid("b4c2609d-53d8-4297-9d61-6edda046cb0e"),
+                            Id = new Guid("c36a85e7-2225-46b2-9602-edfb043ccd4c"),
                             Description = "A subgenre which combines the romance genre with comedy, focusing on two or more individuals as they discover and attempt to deal with their romantic love, attractions to each other. ",
                             Name = "Crime"
                         },
                         new
                         {
-                            Id = new Guid("468724d7-1c44-4049-b2db-dab042e82b97"),
+                            Id = new Guid("0116dfc4-89f5-4cbc-9a4e-730b99251c99"),
                             Description = "Within film, television and radio (but not theatre), drama is a genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone,",
                             Name = "Drama"
                         },
                         new
                         {
-                            Id = new Guid("2a64d5d4-1c41-4094-9cce-32bdd04e1a3c"),
+                            Id = new Guid("4c789ee2-1bcb-44e3-a00b-5b8380c749da"),
                             Description = "Science fiction is similar to fantasy, except stories in this genre use scientific understanding to explain the universe that it takes place in. It generally includes or is centered on the presumed effects or ramifications of computers or machines; travel through space, time or alternate universes; alien life-forms; genetic engineering; or other such things. ",
                             Name = "Sci-Fi"
                         },
                         new
                         {
-                            Id = new Guid("05020464-be32-4972-92db-1817f91aea38"),
+                            Id = new Guid("0d4084fe-2721-49af-b175-9f3b48136680"),
                             Description = "Romance novels are emotion-driven stories that are primarily focused on the relationship between the main characters of the story.",
                             Name = "Romance"
                         },
                         new
                         {
-                            Id = new Guid("690c5d6d-1893-4687-80b6-0f43d5386643"),
+                            Id = new Guid("5bd4675c-ef42-4773-bc23-387e14217cf5"),
                             Description = "A fantasy story is about magic or supernatural forces, rather than technology, though it often is made to include elements of other genres, such as science fiction elements, for instance computers or DNA, if it happens to take place in a modern or future era. ",
                             Name = "Fantasy"
                         },
                         new
                         {
-                            Id = new Guid("cdc15b3f-9407-4e5b-8644-63ee9eeb8a02"),
+                            Id = new Guid("f5a18b25-31b6-4548-80d3-0e16c3ffce09"),
                             Description = "The coverage of sports as a television program, on radio and other broadcasting media. It usually involves one or more sports commentators describing the events as they happen, which is called colour commentary.",
                             Name = "Sport"
                         },
                         new
                         {
-                            Id = new Guid("70569ac5-abce-4c31-845f-6b82adb231d3"),
+                            Id = new Guid("494ed9cc-5bf8-4661-8b12-d3a1b3448ad8"),
                             Description = "tories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century.",
                             Name = "Western"
                         },
                         new
                         {
-                            Id = new Guid("516b38a7-5451-48b2-85b7-9891aaed7668"),
+                            Id = new Guid("620daa39-ad15-48ec-9ef1-935e6b005664"),
                             Description = "A Thriller is a story that is usually a mix of fear and excitement. It has traits from the suspense genre and often from the action, adventure or mystery genres, but the level of terror makes it borderline horror fiction at times as well. ",
                             Name = "Thriller"
                         },
                         new
                         {
-                            Id = new Guid("ad5d2dbf-e7ca-4a97-b152-c13c016e162c"),
+                            Id = new Guid("3ab6092e-ac32-42ac-96b1-962e8b2880c6"),
                             Description = "The family saga is a genre of literature which chronicles the lives and doings of a family or a number of related or interconnected families over a period of time. ",
                             Name = "Family"
                         });
@@ -141,7 +141,7 @@ namespace Data.Migrations
                         .HasPrecision(15, 2)
                         .HasColumnType("decimal(15,2)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("ImagePath")
                         .HasMaxLength(1000)
                         .HasColumnType("varchar(1000)");
 
@@ -165,9 +165,9 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("59188c33-394c-4752-acf7-c9d250ba57a4"),
+                            Id = new Guid("e4ab1450-02ed-448e-b946-5b2b5bb971de"),
                             Director = "Rob Reiner",
-                            GenreId = new Guid("66ac5ce8-9f4d-4edc-a9e6-813c7433c360"),
+                            GenreId = new Guid("b3105b2e-2fc3-446f-a4a9-06a9a6d1f535"),
                             Gross = 92823600m,
                             Rating = 7.5999999999999996,
                             ReleaseDate = new DateTime(1989, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -175,9 +175,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("21ea3b1c-98d7-4949-8c2d-fbe4ded8e7d0"),
+                            Id = new Guid("f9b3891b-a554-4001-b483-e4ff789ae83e"),
                             Director = "Ivan Reitman",
-                            GenreId = new Guid("282bcfb8-0692-4506-ba79-77683854b48f"),
+                            GenreId = new Guid("7f12a4de-69a8-402e-a5e4-e8592bc1412c"),
                             Gross = 13612564m,
                             Rating = 6.5,
                             ReleaseDate = new DateTime(1984, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -185,9 +185,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("51e14bdc-5c79-4de1-8400-4633e5eedccf"),
+                            Id = new Guid("76c04223-ba1f-455f-95f5-09d20595285b"),
                             Director = "Ivan Reitman",
-                            GenreId = new Guid("282bcfb8-0692-4506-ba79-77683854b48f"),
+                            GenreId = new Guid("7f12a4de-69a8-402e-a5e4-e8592bc1412c"),
                             Gross = 112494738m,
                             Rating = 6.5,
                             ReleaseDate = new DateTime(1986, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -195,9 +195,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2bbde433-cf8c-4885-ac1d-22f967b4af52"),
+                            Id = new Guid("8cf409d5-6e0e-4513-a661-362106f4964a"),
                             Director = "Howard Hawks",
-                            GenreId = new Guid("70569ac5-abce-4c31-845f-6b82adb231d3"),
+                            GenreId = new Guid("494ed9cc-5bf8-4661-8b12-d3a1b3448ad8"),
                             Gross = 5750000m,
                             Rating = 8.0999999999999996,
                             ReleaseDate = new DateTime(1959, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -205,9 +205,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("df399d10-27ff-490a-ac61-8a4f0ced6c95"),
+                            Id = new Guid("5424d100-6627-4b63-b542-a9c667ee52e4"),
                             Director = "Frank Darabont",
-                            GenreId = new Guid("468724d7-1c44-4049-b2db-dab042e82b97"),
+                            GenreId = new Guid("0116dfc4-89f5-4cbc-9a4e-730b99251c99"),
                             Gross = 28341469m,
                             Rating = 9.3000000000000007,
                             ReleaseDate = new DateTime(1994, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -215,9 +215,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1ef18b4f-5ce4-41b0-a6c9-dc815effc846"),
+                            Id = new Guid("11117691-4a26-45a9-b23b-6ad45d6a3ff0"),
                             Director = "Francis Ford Coppola",
-                            GenreId = new Guid("468724d7-1c44-4049-b2db-dab042e82b97"),
+                            GenreId = new Guid("0116dfc4-89f5-4cbc-9a4e-730b99251c99"),
                             Gross = 134821952m,
                             Rating = 9.1999999999999993,
                             ReleaseDate = new DateTime(1972, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -225,9 +225,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ecba6154-0573-44e4-920f-fedb69ad2b30"),
+                            Id = new Guid("5f5343e9-9f25-4dfd-80e0-0b92781e3483"),
                             Director = "Quentin Tarantino",
-                            GenreId = new Guid("516b38a7-5451-48b2-85b7-9891aaed7668"),
+                            GenreId = new Guid("620daa39-ad15-48ec-9ef1-935e6b005664"),
                             Gross = 107930000m,
                             Rating = 8.9000000000000004,
                             ReleaseDate = new DateTime(1994, 10, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -235,9 +235,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0a1a5650-ce87-41b6-8af2-73e66fa79268"),
+                            Id = new Guid("46836761-ad64-4f40-b75c-c9d76f73111d"),
                             Director = "Steven Spielberg",
-                            GenreId = new Guid("468724d7-1c44-4049-b2db-dab042e82b97"),
+                            GenreId = new Guid("0116dfc4-89f5-4cbc-9a4e-730b99251c99"),
                             Gross = 96067179m,
                             Rating = 8.9000000000000004,
                             ReleaseDate = new DateTime(1994, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -245,9 +245,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("da233b1d-6b3f-4dd3-af56-7361c98aa202"),
+                            Id = new Guid("eb531e9e-ada0-4442-8e77-ec3ec38f0ca7"),
                             Director = "Christopher Nolan",
-                            GenreId = new Guid("d0eee2ec-375b-45f9-b27f-d9ba62ea3039"),
+                            GenreId = new Guid("2f60b161-3b09-4517-9243-8d773681c5a7"),
                             Gross = 533316061m,
                             Rating = 9.0,
                             ReleaseDate = new DateTime(2008, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -255,9 +255,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("19a684aa-1bd4-4295-8c87-27a2979645b5"),
+                            Id = new Guid("700140c3-9f23-4e68-a8b1-b3fb3598ea16"),
                             Director = "Peter Jackson",
-                            GenreId = new Guid("d0eee2ec-375b-45f9-b27f-d9ba62ea3039"),
+                            GenreId = new Guid("2f60b161-3b09-4517-9243-8d773681c5a7"),
                             Gross = 377019252m,
                             Rating = 8.9000000000000004,
                             ReleaseDate = new DateTime(2003, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -265,9 +265,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a0ec20be-d18e-48ff-9db2-3b40cf734e6f"),
+                            Id = new Guid("beddb2ef-57af-4f55-a8bb-99f655403bf6"),
                             Director = "George Lucas",
-                            GenreId = new Guid("d0eee2ec-375b-45f9-b27f-d9ba62ea3039"),
+                            GenreId = new Guid("2f60b161-3b09-4517-9243-8d773681c5a7"),
                             Gross = 460935665m,
                             Rating = 8.6999999999999993,
                             ReleaseDate = new DateTime(1977, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -275,9 +275,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b8c81cd8-4242-410e-9768-aeefe01307f6"),
+                            Id = new Guid("d67c562a-3f3d-4aea-85b1-40b21240213c"),
                             Director = "The Wachowski Brothers",
-                            GenreId = new Guid("2a64d5d4-1c41-4094-9cce-32bdd04e1a3c"),
+                            GenreId = new Guid("4c789ee2-1bcb-44e3-a00b-5b8380c749da"),
                             Gross = 171383253m,
                             Rating = 8.6999999999999993,
                             ReleaseDate = new DateTime(1999, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -285,9 +285,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("662d4afb-501d-49b3-b0c5-62fcac428dc4"),
+                            Id = new Guid("af640b80-33da-41b4-b2fb-d82dcbd11905"),
                             Director = "Robert Zemeckis",
-                            GenreId = new Guid("282bcfb8-0692-4506-ba79-77683854b48f"),
+                            GenreId = new Guid("7f12a4de-69a8-402e-a5e4-e8592bc1412c"),
                             Gross = 329691196m,
                             Rating = 8.8000000000000007,
                             ReleaseDate = new DateTime(1994, 7, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -295,9 +295,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3d61f64a-638e-4093-bb51-ec86c57a3ed8"),
+                            Id = new Guid("82e1326b-eec1-425d-a348-297da8d37e1d"),
                             Director = " Terry Gilliam & Terry Jones",
-                            GenreId = new Guid("282bcfb8-0692-4506-ba79-77683854b48f"),
+                            GenreId = new Guid("7f12a4de-69a8-402e-a5e4-e8592bc1412c"),
                             Gross = 1229197m,
                             Rating = 8.3000000000000007,
                             ReleaseDate = new DateTime(1975, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -305,9 +305,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0b2885eb-8ba4-4be1-b601-f7f2b9498cf9"),
+                            Id = new Guid("f73b0370-d698-47ad-a74c-11677fa3264a"),
                             Director = "Stanley Kubrick",
-                            GenreId = new Guid("2a64d5d4-1c41-4094-9cce-32bdd04e1a3c"),
+                            GenreId = new Guid("4c789ee2-1bcb-44e3-a00b-5b8380c749da"),
                             Gross = 56715371m,
                             Rating = 8.3000000000000007,
                             ReleaseDate = new DateTime(1968, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -315,9 +315,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("03c2b261-4954-4f0b-8d2d-8e96250912d6"),
+                            Id = new Guid("839650de-b327-493d-9618-6c0be9cbb19c"),
                             Director = "Robert Zemeckis",
-                            GenreId = new Guid("ad5d2dbf-e7ca-4a97-b152-c13c016e162c"),
+                            GenreId = new Guid("3ab6092e-ac32-42ac-96b1-962e8b2880c6"),
                             Gross = 210609762m,
                             Rating = 8.5,
                             ReleaseDate = new DateTime(1989, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -325,9 +325,9 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("822c9d5a-a75c-4035-a8ef-ca70c7a185d1"),
+                            Id = new Guid("bc307e34-5b3f-4160-b218-23453b2d1b11"),
                             Director = "Pete Docter & David Silverman",
-                            GenreId = new Guid("ad5d2dbf-e7ca-4a97-b152-c13c016e162c"),
+                            GenreId = new Guid("3ab6092e-ac32-42ac-96b1-962e8b2880c6"),
                             Gross = 289907418m,
                             Rating = 8.0999999999999996,
                             ReleaseDate = new DateTime(2001, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),

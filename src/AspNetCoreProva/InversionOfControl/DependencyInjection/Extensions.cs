@@ -18,6 +18,7 @@ namespace InversionOfControl.DependencyInjection
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<INotifierService, NotifierService>();
 
             services.AddDbContext<MovieDbContext>(option => option.UseSqlServer(configuration.GetConnectionString("MovieDbContext")));
 

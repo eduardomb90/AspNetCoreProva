@@ -10,12 +10,14 @@ namespace Application.Domain.Entities
         public decimal Gross { get; set; }
         public double Rating { get; set; }
 
+        
         //Foreign Key
         public Guid GenreId { get; set; }
         public virtual Genre Genre { get; set; }
 
+        
         //Image File
-        public string ImageUrl { get; set; }
+        public string ImagePath { get; set; }
 
         public Movie()
         {

@@ -13,12 +13,17 @@ namespace WebMvc.UI.Configuration
     public abstract class MainController : Controller
     {
         protected readonly IMapper _mapper;
-        protected readonly IMovieService _movieService;
+        protected readonly INotifierService _notifierService;
 
-        public MainController(IMapper mapper, IMovieService movieService)
+        public MainController(IMapper mapper, INotifierService notifierService)
         {
             _mapper = mapper;
-            _movieService = movieService;
+            this._notifierService = notifierService;
+        }
+
+        protected bool ValidOperation()
+        {
+            return _notifierService.HasError() ? false:true;
         }
     }
 }

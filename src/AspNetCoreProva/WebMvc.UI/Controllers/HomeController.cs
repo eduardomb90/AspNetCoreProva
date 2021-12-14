@@ -17,8 +17,8 @@ namespace WebMvc.UI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IMapper mapper, IMovieService movieService) 
-        : base(mapper, movieService)
+        public HomeController(ILogger<HomeController> logger, IMapper mapper, INotifierService notifierService) 
+        : base(mapper, notifierService)
         {
             _logger = logger;
         }

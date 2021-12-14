@@ -14,11 +14,13 @@ namespace Application.Services
     {
         private readonly IMovieRepository _movieRepository;        
         private readonly IGenreRepository _genreRepository;
+        private readonly INotifierService _notifierService;
 
-        public MovieService(IMovieRepository movieRepository, IGenreRepository genreRepository)
+        public MovieService(IMovieRepository movieRepository, IGenreRepository genreRepository, INotifierService notifierService)
         {
             _movieRepository = movieRepository;
             _genreRepository = genreRepository;
+            _notifierService = notifierService;
         }
 
         public async Task<IEnumerable<Movie>> ToList()
@@ -26,30 +28,57 @@ namespace Application.Services
             return await _movieRepository.ToList();
         }
 
+        public async Task<IEnumerable<Movie>> GetAllMovies()
+        {
+            return await _movieRepository.GetAllMovies();
+        }
+
         public async Task<Movie> Find(Expression<Func<Movie, bool>> predicate)
         {
             return await _movieRepository.Find(predicate);
         }
 
+        public async Task<Movie> GetById(Guid id)
+        {
+            return await _movieRepository.GetById(id);
+        }
+
         public async Task Insert(Movie obj)
         {
+            if (_movieRepository.Find(x => x.Title.Equals(obj.Title) && x.ReleaseDate == obj.ReleaseDate).Result != null)
+            {
+                _notifierService.AddError("O filme já existe!");
+                return;
+            }
+            
             await _movieRepository.Insert(obj);
+            await _movieRepository.SaveChanges();
         }
 
         public async Task Update(Movie obj)
         {
             var movie = await Find(movie => movie.Id == obj.Id);
-            if (movie == null) return;
+            if (movie == null)
+            {
+                _notifierService.AddError("Filme não encontrado");
+                return;
+            }
 
             await _movieRepository.Update(movie);
+            await _movieRepository.SaveChanges();
         }
 
         public async Task Delete(Movie obj)
         {
             var movie = await Find(movie => movie.Id == obj.Id);
-            if (movie == null) return;
+            if (movie == null)
+            {
+                _notifierService.AddError("Filme não encontrado");
+                return;
+            }
 
             await _movieRepository.Delete(movie);
+            await _movieRepository.SaveChanges();
         }
 
         public async Task<IEnumerable<Genre>> GetAllGenres()

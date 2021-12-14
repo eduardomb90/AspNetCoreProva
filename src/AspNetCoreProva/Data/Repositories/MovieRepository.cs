@@ -14,5 +14,15 @@ namespace Data.Repositories
         public MovieRepository(MovieDbContext context) : base(context)
         {
         }
+
+        public async Task<IEnumerable<Movie>> GetAllMovies()
+        {
+            return await _context.Movies.Include(x => x.Genre).ToListAsync();
+        }
+
+        public async Task<Movie> GetById(Guid id)
+        {
+            return await _context.Movies.Include(x => x.Genre).Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

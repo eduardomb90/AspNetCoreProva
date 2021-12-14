@@ -26,7 +26,7 @@ namespace Data.ContextConfig
             builder.Property(p => p.Gross)
                 .HasPrecision(15, 2);
 
-            builder.Property(p => p.ImageUrl)
+            builder.Property(p => p.ImagePath)
                 .HasMaxLength(1000);
         }
     }

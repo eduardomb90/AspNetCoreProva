@@ -11,9 +11,17 @@ namespace Application.Interfaces.Services
     public interface IMovieService
     {
         Task<IEnumerable<Movie>> ToList();
+        Task<IEnumerable<Movie>> GetAllMovies();
         Task<Movie> Find(Expression<Func<Movie,bool>> predicate);
+        Task<Movie> GetById(Guid id);
+
+        
         Task Insert(Movie obj);
         Task Update(Movie obj);
         Task Delete(Movie obj);
+        
+        
+        Task<IEnumerable<Genre>> GetAllGenres();
+        Task<Genre> GetGenre(Expression<Func<Genre, bool>> predicate);
     }
 }

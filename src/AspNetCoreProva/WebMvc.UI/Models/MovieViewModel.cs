@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,12 +15,13 @@ namespace WebMvc.UI.Models
         public decimal Gross { get; set; }
         public double Rating { get; set; }
               
+        
         public Guid GenreId { get; set; }
         public virtual GenreViewModel Genre { get; set; }
+        public IEnumerable<GenreViewModel> Genres { get; set; } // --> somente para tela
 
-        public string ImageUrl { get; set; }
 
-
-        public IEnumerable<GenreViewModel> Genres { get; set; }
+        public string ImagePath { get; set; }
+        public IFormFile ImageUpload { get; set; }
     }
 }
