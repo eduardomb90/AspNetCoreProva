@@ -30,23 +30,22 @@ namespace WebMvc.UI.Models
         public string Director { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório!")]
-        //[Range(0.0, 9999999999999.99)]
-        //[DisplayFormat(DataFormatString = "{0:C2}")]
-        [Display(Name ="Receita")]
+        
+        [Display(Name ="Gross")]
         [DataType(DataType.Currency)]
         [Column(TypeName ="decimal 18,2")]
         public decimal Gross { get; set; }
 
-        [RegularExpression(@"^\d+(\.\d{1,2})?$")]
+        //[RegularExpression(@"^\d+(\.\d{1,2})?$")]
         [Range(0.0, 10.0, ErrorMessage ="O campo {0} deve ser entre {1} e {2}")]
         public double Rating { get; set; }
               
-        
+        [Display(Name ="Genre")]
         public Guid GenreId { get; set; }
         public virtual GenreViewModel Genre { get; set; }
         public IEnumerable<GenreViewModel> Genres { get; set; } // --> somente para tela
 
-
+        [Display(Name ="Poster")]
         public string ImagePath { get; set; }
         public IFormFile ImageUpload { get; set; }
     }

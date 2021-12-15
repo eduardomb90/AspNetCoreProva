@@ -49,6 +49,7 @@ namespace WebMvc.UI.Controllers
         }
 
         [HttpPost]
+        [AutoValidateAntiforgeryToken]
         [AllowAnonymous]
         public async Task<IActionResult> Create(MovieViewModel viewModel)
         {
@@ -93,6 +94,7 @@ namespace WebMvc.UI.Controllers
         }
 
         [HttpPost]
+        [AutoValidateAntiforgeryToken]
         [AllowAnonymous]
         public async Task<IActionResult> Edit(MovieViewModel viewModel)
         {
@@ -131,6 +133,7 @@ namespace WebMvc.UI.Controllers
         }
 
         [HttpPost(), ActionName("Delete")]
+        [AutoValidateAntiforgeryToken]
         [AllowAnonymous]
         public async Task<IActionResult> Delete(MovieViewModel viewModel)
         { 
