@@ -54,7 +54,7 @@ namespace WebMvc.UI.Controllers
         {
             if (!ModelState.IsValid) return View(await MappingListGeneros(viewModel));
 
-            var path = Guid.NewGuid() + Path.GetExtension(viewModel.ImageUpload?.FileName);
+            var path = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.ImageUpload?.FileName);
 
             if(UploadFile(viewModel.ImageUpload, path).Result)
             {
@@ -70,9 +70,21 @@ namespace WebMvc.UI.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var movie = await _movieService.GetById(id);
+
+            return View(_mapper.Map<MovieViewModel>(movie));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Edit(Guid id)
         {
             var movie = await _movieService.GetById(id);
+
+            if (movie == null) return NotFound();
+
             var viewModel = _mapper.Map<MovieViewModel>(movie);
 
             await MappingListGeneros(viewModel);
@@ -90,12 +102,39 @@ namespace WebMvc.UI.Controllers
 
             if (UploadFile(viewModel.ImageUpload, path).Result)
             {
+                //if(viewModel.ImagePath != null)
+                //{
+
+                //}
+                
                 viewModel.ImagePath = path;
             }
 
-            await _movieService.Insert(_mapper.Map<Movie>(viewModel));
+            await _movieService.Update(_mapper.Map<Movie>(viewModel));
 
             if (!ValidOperation()) return View(await MappingListGeneros(viewModel));
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var movie = await _movieService.GetById(id);
+
+            if (movie == null) return NotFound();
+
+            var viewModel = _mapper.Map<MovieViewModel>(movie);
+
+            return View(viewModel);
+        }
+
+        [HttpPost(), ActionName("Delete")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete(MovieViewModel viewModel)
+        { 
+            await _movieService.Delete(_mapper.Map<Movie>(viewModel));
 
             return RedirectToAction(nameof(Index));
         }
@@ -112,7 +151,7 @@ namespace WebMvc.UI.Controllers
         }
         private async Task<bool> UploadFile(IFormFile imageUpload, string imgPath)
         {
-            if(imageUpload == null || imageUpload?.Length == 0)  return false;
+            if(imageUpload == null /*|| imageUpload?.Length == 0*/)  return false;
 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/image", imgPath);
 

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var imagePath = "~/image/" + (Model.ImagePath ?? "noimage.jpg");
 }
 
 <h1>Edit</h1>
@@ -10,9 +11,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
+        <form asp-action="Edit" asp-controller="Movie" enctype="multipart/form-data">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input hidden asp-for="Id" />
+            <input hidden asp-for="ImagePath" />
+
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
@@ -39,28 +44,34 @@
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div>
-                <label asp-for="Genre.Name" class="control-label"></label>
+                <label asp-for="GenreId" class="control-label"></label>
                 <select asp-for="GenreId" class="form-control" asp-items="@(new SelectList(Model.Genres,"Id", "Name"))">
                     <option>Selecionar</option>
                 </select>
                 <span asp-validation-for="GenreId" class="text-danger"></span>
             </div>
-            
-            <br/>
-            <img src="~/image/@Model.ImagePath" alt="Pôster do filme" class="card-img"
-                 asp-append-version="true"/>
-            <br/>
 
-            
-
-            <div class="form-group">
-                <label asp-for="@Model.ImageUpload" class="control-label"></label>
-                <input asp-for="@Model.ImageUpload" class="form-control"/>
-                <span asp-validation-for="@Model.ImageUpload" class="text-danger"></span>
+            <div>
+                <label asp-for="ImageUpload" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-auto">
+                    <div class="custom-file">
+                        <input asp-for="ImageUpload" class="form-control custom-file-input"/>
+                        <label class="custom-file-label">Click here to change image</label>
+                        @*<span asp-validation-for="ImageUpload" class="text-danger"></span>*@
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group row col-sm-4 offset-4">
+                <img src="@imagePath" alt="Pôster do filme" class="card-img" asp-append-version="true" />
+            </div>
+
+            <div class="form-group row">
+                @*<input type="submit" value="Save" class="btn btn-primary" />*@
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Cancel</a>
+                </div>
             </div>
 
         </form>
@@ -73,4 +84,15 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    @*@{ 
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }*@
 }

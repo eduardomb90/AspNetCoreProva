@@ -57,27 +57,28 @@ namespace Application.Services
 
         public async Task Update(Movie obj)
         {
-            var movie = await Find(movie => movie.Id == obj.Id);
-            if (movie == null)
-            {
-                _notifierService.AddError("Filme não encontrado");
-                return;
-            }
+            //var movie = await Find(movie => movie.Id == obj.Id);
+            
+            //if (movie == null)
+            //{
+            //    _notifierService.AddError("Filme não encontrado");
+            //    return;
+            //}
 
-            await _movieRepository.Update(movie);
+            await _movieRepository.Update(obj);
             await _movieRepository.SaveChanges();
         }
 
         public async Task Delete(Movie obj)
         {
-            var movie = await Find(movie => movie.Id == obj.Id);
-            if (movie == null)
-            {
-                _notifierService.AddError("Filme não encontrado");
-                return;
-            }
+            //var movie = await Find(movie => movie.Id == obj.Id);
+            //if (movie == null)
+            //{
+            //    _notifierService.AddError("Filme não encontrado");
+            //    return;
+            //}
 
-            await _movieRepository.Delete(movie);
+            await _movieRepository.Delete(obj);
             await _movieRepository.SaveChanges();
         }
 

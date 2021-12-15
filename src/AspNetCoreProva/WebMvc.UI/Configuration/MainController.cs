@@ -23,7 +23,7 @@ namespace WebMvc.UI.Configuration
 
         protected bool ValidOperation()
         {
-            return _notifierService.HasError() ? false:true;
+            return !_notifierService.HasError();
         }
     }
 }
