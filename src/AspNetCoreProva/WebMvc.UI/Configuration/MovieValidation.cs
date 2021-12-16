@@ -11,10 +11,14 @@ namespace WebMvc.UI.Configuration
     {
         public MovieValidation()
         {
-            RuleFor(x => x.Rating)
-                .GreaterThanOrEqualTo(0)
-                .LessThanOrEqualTo(10)
+            RuleFor(x => VerificarZeroADez(x.Rating))
+                .Equal(true)
                 .WithMessage("Rating must be between 0 and 10..");
+        }
+
+        private bool VerificarZeroADez(string valor) 
+        {
+            return true;
         }
     }
 }

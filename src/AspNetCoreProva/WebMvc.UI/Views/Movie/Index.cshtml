@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MovieViewModel>
+﻿@model PagedViewModel<MovieViewModel>
 
 @{
     ViewData["Title"] = "Movie List";
@@ -16,37 +16,42 @@
     </div>
 </div>
 
+<form asp-action="Index" method="get">
+    <input type="text" name="query" id="query" value="@TempData["Query"]" class="form-control" />
+    <button class="btn btn-primary">Filter</button>
+</form>
+
 <div class="panel panel-default">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ImagePath)
+                    Poster
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                    Release Date
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Director)
+                    Director
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Gross)
+                    Gross
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Rating)
+                    Rating
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Genre.Name)
+                    Genre
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.List)
             {
                 <tr>
                     <td>

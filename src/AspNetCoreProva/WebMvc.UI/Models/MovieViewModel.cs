@@ -32,14 +32,12 @@ namespace WebMvc.UI.Models
         [Required(ErrorMessage = "Este campo é obrigatório!")]
         
         [Display(Name ="Gross")]
-        [DataType(DataType.Currency)]
-        [Column(TypeName ="decimal 18,2")]
-        public decimal Gross { get; set; }
+        public string Gross { get; set; }
 
         
         //[RegularExpression(@"^\d+(\.\d{1,2})?$")]
         //[Range(0.0, 10.0, ErrorMessage ="O campo {0} deve ser entre {1} e {2}")]
-        public double Rating { get; set; }
+        public string Rating { get; set; }
               
         [Display(Name ="Genre")]
         public Guid GenreId { get; set; }

@@ -14,6 +14,7 @@ namespace WebMvc.UI.Configuration
         {
             CreateMap<MovieViewModel, Movie>().ReverseMap();
             CreateMap<GenreViewModel, Genre>().ReverseMap();
+            CreateMap<PagedViewModel<MovieViewModel>, PagedViewModel<Movie>>().ReverseMap();
         }
     }
 }

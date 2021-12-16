@@ -106,5 +106,10 @@ namespace Application.Services
         {
             return await _genreRepository.GetGenreByName(name);
         }
+
+        public Task<PagedViewModel<Movie>> Paginacao(int page = 1, int size = 5, string query = null)
+        {
+            return _movieRepository.Paginacao(page, size, query);
+        }
     }
 }
