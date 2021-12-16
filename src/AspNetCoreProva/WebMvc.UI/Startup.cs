@@ -33,8 +33,15 @@ namespace WebMvc.UI
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("IdentityContext")));
 
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(option => {
+                option.Password.RequiredLength = 8;
+                option.Password.RequiredUniqueChars = 2;
+            }).AddEntityFrameworkStores<AppDbContext>();
+
+            //services.Configure<IdentityOptions>(option => {
+            //    option.Password.RequiredLength = 8;
+            //    option.Password.RequiredUniqueChars = 2;
+            //});
 
             services.AddControllersWithViews();
         }

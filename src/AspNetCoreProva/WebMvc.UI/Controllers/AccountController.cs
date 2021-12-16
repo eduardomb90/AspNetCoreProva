@@ -37,7 +37,7 @@ namespace WebMvc.UI.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(nameof(Index), "Home");
             }
 
             foreach(var error in result.Errors)
@@ -46,6 +46,38 @@ namespace WebMvc.UI.Controllers
             }
 
             return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, 
+                                                                      viewModel.RememberMe, false);
+
+                if (result.Succeeded)
+                    return RedirectToAction(nameof(Index), "Home");
+            
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+            }
+
+            return View(viewModel);
         }
     }
 }
