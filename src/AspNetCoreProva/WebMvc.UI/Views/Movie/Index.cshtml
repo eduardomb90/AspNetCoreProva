@@ -1,7 +1,7 @@
 ﻿@model PagedViewModel<MovieViewModel>
 
 @{
-    ViewData["Title"] = "Movie List";
+    ViewData["Title"] = "Movie List";    
     //var imagePath = "~/image/" + (Model.ImagePath ?? "noimage.jpg");
 }
 
@@ -17,6 +17,9 @@
 </div>
 
 <form asp-action="Index" method="get">
+    <select asp-items="ViewBag.GenreList" id="query" name="query">
+        <option>Genre</option>
+    </select>
     <input type="text" name="query" id="query" value="@TempData["Query"]" class="form-control" />
     <button class="btn btn-primary">Filter</button>
 </form>

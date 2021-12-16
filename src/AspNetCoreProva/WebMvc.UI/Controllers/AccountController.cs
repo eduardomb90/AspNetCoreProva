@@ -1,25 +1,31 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Application.Interfaces.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebMvc.UI.Configuration;
 using WebMvc.UI.Models;
 
 namespace WebMvc.UI.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : MainController
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IMapper mapper, INotifierService notifierService)
+        : base(mapper, notifierService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
         
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -27,6 +33,7 @@ namespace WebMvc.UI.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel viewModel)
         {
             if(!ModelState.IsValid) return View(viewModel);
@@ -56,6 +63,7 @@ namespace WebMvc.UI.Controllers
             return RedirectToAction(nameof(Index), "Home");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
@@ -63,6 +71,7 @@ namespace WebMvc.UI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Login(LoginViewModel viewModel)
         {

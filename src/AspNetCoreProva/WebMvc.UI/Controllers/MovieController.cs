@@ -35,6 +35,8 @@ namespace WebMvc.UI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(int page = 1, int size = 5, string query = default)
         {
+            var genreList = _mapper.Map<IEnumerable<GenreViewModel>>(await _movieService.GetAllGenres());
+            ViewBag.GenreList = new SelectList(genreList, "Name", "Name");
             TempData["Query"] = query;
             var movie = await _movieService.Paginacao(page, size, query);
             

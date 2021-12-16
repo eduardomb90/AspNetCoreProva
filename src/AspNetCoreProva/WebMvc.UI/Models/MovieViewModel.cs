@@ -29,12 +29,10 @@ namespace WebMvc.UI.Models
         [RegularExpression(@"^[a-zA-Z''-'\s]{1,100}$", ErrorMessage = "O nome do diretor só pode conter letras.")]
         public string Director { get; set; }
 
-        [Required(ErrorMessage = "Este campo é obrigatório!")]
-        
-        [Display(Name ="Gross")]
+        //[DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public string Gross { get; set; }
 
-        
+        //[DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         //[RegularExpression(@"^\d+(\.\d{1,2})?$")]
         //[Range(0.0, 10.0, ErrorMessage ="O campo {0} deve ser entre {1} e {2}")]
         public string Rating { get; set; }

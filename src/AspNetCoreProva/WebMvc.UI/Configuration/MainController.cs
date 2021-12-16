@@ -23,6 +23,7 @@ namespace WebMvc.UI.Configuration
 
         protected bool ValidOperation()
         {
+            //TempData["Errors"] = "";
             return !_notifierService.HasError();
         }
     }
