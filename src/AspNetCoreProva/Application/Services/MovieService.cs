@@ -43,6 +43,11 @@ namespace Application.Services
             return await _movieRepository.GetById(id);
         }
 
+        public async Task<IEnumerable<Movie>> FilterMovies(Expression<Func<Movie, bool>> predicate)
+        {
+            return await _movieRepository.FilterMovies(predicate);
+        }
+
         public async Task Insert(Movie obj)
         {
             if (_movieRepository.Find(x => x.Title.Equals(obj.Title) && x.ReleaseDate == obj.ReleaseDate).Result != null)
@@ -90,6 +95,16 @@ namespace Application.Services
         public async Task<Genre> GetGenre(Expression<Func<Genre, bool>> predicate)
         {
             return await _genreRepository.Find(predicate);
+        }
+
+        public async Task<IEnumerable<Genre>> GetGenreOrdered()
+        {
+            return await _genreRepository.GetOrdered();
+        }
+
+        public async Task<Genre> GetGenreByName(string name)
+        {
+            return await _genreRepository.GetGenreByName(name);
         }
     }
 }

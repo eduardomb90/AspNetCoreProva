@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Data.Repositories
@@ -13,6 +14,11 @@ namespace Data.Repositories
     {
         public MovieRepository(MovieDbContext context) : base(context)
         {
+        }
+
+        public async Task<IEnumerable<Movie>> FilterMovies(Expression<Func<Movie, bool>> predicate)
+        {
+            return await _context.Movies.Where(predicate).ToListAsync();
         }
 
         public async Task<IEnumerable<Movie>> GetAllMovies()

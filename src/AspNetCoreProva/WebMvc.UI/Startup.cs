@@ -1,17 +1,16 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using InversionOfControl.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebMvc.UI.Configuration;
 using WebMvc.UI.IdentityContext;
+using WebMvc.UI.Models;
 
 namespace WebMvc.UI
 {
@@ -31,6 +30,9 @@ namespace WebMvc.UI
             services.AddApplicationServices(Configuration);
 
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("IdentityContext")));
+
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
+            services.AddScoped<IValidator<MovieViewModel>, MovieValidation>();
 
 
             services.AddIdentity<IdentityUser, IdentityRole>(option => {

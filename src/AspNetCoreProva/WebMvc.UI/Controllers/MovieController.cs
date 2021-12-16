@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -19,22 +20,24 @@ namespace WebMvc.UI.Controllers
     {
         private readonly ILogger<MovieController> _logger;
         protected readonly IMovieService _movieService;
+        protected readonly MovieValidation _movieValidation;
 
-        public MovieController(ILogger<MovieController> logger, IMovieService movieService, 
-                                IMapper mapper, INotifierService notifierService)
+        public MovieController(ILogger<MovieController> logger, IMovieService movieService,
+                                IMapper mapper, INotifierService notifierService, MovieValidation movieValidation)
         : base(mapper, notifierService)
         {
             _logger = logger;
             _movieService = movieService;
+            _movieValidation = movieValidation;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, Guid SelectedGenre, string sortOrder)
         {
             var movie = await _movieService.GetAllMovies();
             var viewModel = _mapper.Map<IEnumerable<MovieViewModel>>(movie);
-
+            
             return View(viewModel);
         }
 
@@ -100,6 +103,18 @@ namespace WebMvc.UI.Controllers
         {
             if (!ModelState.IsValid) return View(await MappingListGeneros(viewModel));
 
+            var result = await _movieValidation.ValidateAsync(viewModel);
+
+            if (!result.IsValid) 
+            {
+                foreach (var failure in result.Errors)
+                {
+                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                }
+                
+                return View(await MappingListGeneros(viewModel));
+            }
+            
             var path = Guid.NewGuid() + Path.GetExtension(viewModel.ImageUpload?.FileName);
 
             if (UploadFile(viewModel.ImageUpload, path).Result)
@@ -117,6 +132,7 @@ namespace WebMvc.UI.Controllers
             if (!ValidOperation()) return View(await MappingListGeneros(viewModel));
 
             return RedirectToAction(nameof(Index));
+
         }
 
         [HttpGet]
@@ -141,6 +157,29 @@ namespace WebMvc.UI.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GenreMenu()
+        {
+            var genres = await _movieService.GetAllGenres();            
+            var viewModel = _mapper.Map<IEnumerable<GenreViewModel>>(genres);
+
+            return View(viewModel);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> Browse(string genre = "Action")
+        {
+            var genreModel = await _movieService.GetGenreByName(genre);
+            var viewModel = _mapper.Map<GenreViewModel>(genreModel);
+
+            return View(viewModel);
+        }
+
+
+
+
 
 
 
