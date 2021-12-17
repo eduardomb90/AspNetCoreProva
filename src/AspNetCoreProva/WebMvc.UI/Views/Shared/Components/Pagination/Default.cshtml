@@ -1,0 +1,19 @@
+﻿@model IPagedViewModel
+
+<nav aria-label="Navegação de página exemplo">
+    <ul class="pagination">
+        @{ 
+            var prevDisable = !Model.PreviousPage ? "disabled" : "";
+            var nextDisable = !Model.NextPage ? "disabled" : "";
+        }
+
+        <li class="page-item @prevDisable">
+            <a asp-action="Index" asp-route-page="@(Model.PageIndex-1)"
+               class="page-link">Anterior</a>
+        </li>
+        <li class="page-item @nextDisable">
+            <a asp-action="Index" asp-route-page="@(Model.PageIndex+1)"
+               class="page-link">Próximo</a>
+        </li>
+    </ul>
+</nav>

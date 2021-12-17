@@ -13,6 +13,6 @@ namespace Application.Interfaces.Repositories
 
         Task<IEnumerable<Movie>> FilterMovies(Expression<Func<Movie, bool>> predicate);
 
-        Task<PagedViewModel<Movie>> Paginacao(int page, int size, string query = null);
+        Task<PagedViewModel<Movie>> Paginacao(int page, int size, string query = null, string queryGenre = null);
     }
 }

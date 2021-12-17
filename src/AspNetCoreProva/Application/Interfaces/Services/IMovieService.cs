@@ -12,7 +12,7 @@ namespace Application.Interfaces.Services
     {
         Task<IEnumerable<Movie>> ToList();
         Task<IEnumerable<Movie>> GetAllMovies();
-        Task<PagedViewModel<Movie>> Paginacao(int page = 1, int size = 5, string query = default);
+        Task<PagedViewModel<Movie>> Paginacao(int page = 1, int size = 5, string query = default, string queryGenre = default);
         Task<Movie> Find(Expression<Func<Movie,bool>> predicate);
         Task<Movie> GetById(Guid id);
         Task<IEnumerable<Movie>> FilterMovies(Expression<Func<Movie, bool>> predicate);

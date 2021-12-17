@@ -12,9 +12,8 @@ namespace WebMvc.UI.Configuration
         public MovieValidation()
         {
             RuleFor(x => VerificarZeroADez(x.Rating))
-                .Equal(true)
-                .WithMessage("Rating must be between 0 and 10..")
-                ;
+                .Equal(true)                
+                .WithMessage("Rating must be between 0 and 10");
 
             RuleFor(x => x.Rating)
                 .Matches(@"^\d+(\,\d{1,2})?$")

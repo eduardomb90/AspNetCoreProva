@@ -32,12 +32,12 @@ namespace Data.Repositories
             return await _context.Movies.Include(x => x.Genre).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<PagedViewModel<Movie>> Paginacao(int page, int size, string query = null)
+        public async Task<PagedViewModel<Movie>> Paginacao(int page, int size, string query = null, string queryGenre = null)
         {
             IPagedList<Movie> movieList;
             
-            if (!String.IsNullOrEmpty(query))
-            movieList = await _context.Movies.Include(x => x.Genre).Where(x => x.Title.Contains(query) || x.Genre.Name.Contains(query))
+            if (!String.IsNullOrEmpty(query) || !String.IsNullOrEmpty(queryGenre))
+                movieList = await _context.Movies.Include(x => x.Genre).Where(x => x.Title.Contains(query) || x.Genre.Name.Contains(queryGenre))
                     .AsNoTracking().ToPagedListAsync(page, size);
             else
                 movieList = await _context.Movies.Include(x => x.Genre).AsNoTracking().ToPagedListAsync(page, size);

@@ -33,12 +33,14 @@ namespace WebMvc.UI.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Index(int page = 1, int size = 5, string query = default)
+        public async Task<IActionResult> Index(int page = 1, int size = 5, string query = default, string queryGenre = default)
         {
             var genreList = _mapper.Map<IEnumerable<GenreViewModel>>(await _movieService.GetAllGenres());
             ViewBag.GenreList = new SelectList(genreList, "Name", "Name");
+            
             TempData["Query"] = query;
-            var movie = await _movieService.Paginacao(page, size, query);
+            
+            var movie = await _movieService.Paginacao(page, size, query, queryGenre);
             
             return View(_mapper.Map<PagedViewModel<MovieViewModel>>(movie));
         }

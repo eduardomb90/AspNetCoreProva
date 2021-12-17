@@ -11,18 +11,28 @@
     <div class="col-md-12">
         <div>
             <a asp-action="Create" class="btn btn-primary">Create New</a>
+            <span class="input-group-addon"> </span>
             <a asp-action="GenreMenu" class="btn btn-primary">Genres</a>
         </div>
     </div>
 </div>
 
+<hr />
+
 <form asp-action="Index" method="get">
-    <select asp-items="ViewBag.GenreList" id="query" name="query">
-        <option>Genre</option>
-    </select>
-    <input type="text" name="query" id="query" value="@TempData["Query"]" class="form-control" />
-    <button class="btn btn-primary">Filter</button>
+    <div class="col-md-12">
+        <div class="row">
+            <select asp-items="ViewBag.GenreList" id="queryGenre" name="queryGenre" class="form-control col-md-4">
+                <option>Genre</option>
+            </select>
+            <p> <span class="input-group-addon"> </span> </p>
+            <input type="text" name="query" id="query" value="@TempData["Query"]" class="form-control col-md-4" />
+            <button class="btn btn-primary">Filter</button>
+        </div>
+    </div>
 </form>
+
+<br />
 
 <div class="panel panel-default">
     <table class="table table-striped">
@@ -102,5 +112,9 @@
 
             }
         </tbody>
+
     </table>
+    
+    <vc:pagination paged-view-model="@Model" ></vc:pagination>
+
 </div>
